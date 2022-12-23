@@ -13,8 +13,10 @@
 
 #include "oxygen/base/PlatformFunctions.h"
 #include "oxygen/file/FilePackage.h"
-#ifdef PLATFORM_SWITCH
-#include <switch.h>
+#ifdef PLATFORM_3DS
+#include <3ds.h>
+#include <stdio.h>
+#include <string.h>
 
 #ifdef DEBUG
 extern "C" {

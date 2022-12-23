@@ -14,7 +14,7 @@ if (UNIX AND CMAKE_SYSTEM_PROCESSOR MATCHES "^arm")
 	link_directories(/opt/vc/lib)	# Needed when building on Rasperry Pi
 	set(USE_DISCORD false)
 endif()
-if (NINTENDO_SWITCH)
+if (3DS)
 	set(USE_DISCORD false)
 endif()
 message(STATUS "USE_DISCORD = ${USE_DISCORD}")
@@ -52,7 +52,7 @@ endif()
 
 find_package(OpenGL REQUIRED)
 
-if (NINTENDO_SWITCH)
+if (3DS)
 	find_package(PkgConfig REQUIRED)
 	pkg_check_modules(GLAD REQUIRED libglad)
 	include_directories(${GLAD_INCLUDE_DIRS})
@@ -63,7 +63,7 @@ endif()
 
 set(SDL_STATIC ON)
 set(SDL_SHARED OFF)
-if(NINTENDO_SWITCH)
+if(3DS)
 	pkg_check_modules(SDL2 REQUIRED sdl2)
 	include_directories(${SDL2_INCLUDE_DIRS})
 	link_directories(${SDL2_LIBRARY_DIRS})
@@ -75,7 +75,7 @@ endif()
 
 
 # zlib sources as virtual subdirectory "zlib"
-if(NINTENDO_SWITCH)
+if(3DS)
 	pkg_check_modules(ZLIB REQUIRED zlib)
 	include_directories (${ZLIB_INCLUDE_DIRS})
 	link_directories (${ZLIB_LIBRARY_DIRS})
@@ -105,7 +105,7 @@ include_directories(${WORKSPACE_DIR}/Oxygen/sonic3air/source/external)
 
 # TODO: I tried creating config_types.h by calling "./configure" by a add_custom_command,
 #       but that did not work; instead the solution is to simply add the generated file to versioning
-if (NINTENDO_SWITCH)
+if (3DS)
 	pkg_check_modules(VORBIS REQUIRED vorbis)
 	include_directories (${VORBIS_INCLUDE_DIRS})
 	link_directories (${VORBIS_LIBRARY_DIRS})
@@ -119,7 +119,7 @@ endif()
 
 
 # minizip
-if (NINTENDO_SWITCH)
+if (3DS)
 	pkg_check_modules(MINIZIP REQUIRED minizip)
 	include_directories (${MINIZIP_INCLUDE_DIRS})
 	link_directories (${MINIZIP_LIBRARY_DIRS})
